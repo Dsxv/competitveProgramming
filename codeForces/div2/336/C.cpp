@@ -14,6 +14,7 @@ int bs(pii* a , int n , int x) {
 	int l = 0 , r = n-1 , mid ;
 	if(x <= a[0].f) return 0 ;
 	while(l < r ){
+		cout << mid <<" " << l <<" "<< r ;
 		mid = (l+r)/2 ;
 		if(a[mid].f < x) l = mid + 1 ;
 		if(a[mid].f == x) return mid ; //ret index+1 as ret from 0
