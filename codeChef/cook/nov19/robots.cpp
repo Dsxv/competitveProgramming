@@ -21,8 +21,6 @@ void rotate_this(long double & x , long double & y , int phi){
 	long double theta = (phi*pi)/3 ;
 	long double x1 = x*cos(theta) + y*sin(theta) ;
 	long double y1 = -x*sin(theta) + y*cos(theta) ;
-	if(x1 > 0 && x1 < 1e-10) x1 = 0 ;
-	if(y1 > 0 && y1 < 1e-10) y1 = 0 ;
 	x = x1 , y = y1 ;
 }
 
@@ -50,7 +48,7 @@ int32_t main(){
 			cin >> l >> r ;
 			long double x = a[r].x - a[l-1].x , y = a[r].y - a[l-1].y ;
 			rotate_this(x,y,a[l-1].phi) ;
-			cout << fixed << setprecision(8) <<  x <<" "<<y << '\n' ;
+			cout << fixed << setprecision(8) << x <<" "<< y << '\n' ;
 		}
 	}
 	return 0 ;
