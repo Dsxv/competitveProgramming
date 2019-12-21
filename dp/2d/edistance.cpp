@@ -10,7 +10,7 @@ int dp[N][N] ;
 int solve(string s1 , string s2 , int i = 0 , int j = 0){
 	if(i == s1.size() || j == s2.size()) {
 		int a = s1.size() , b = s2.size() ;
-		return max(a-i,b-j) ;
+		return abs(a+j-b-i) ;
 	}
 	if(dp[i][j] != -1) return dp[i][j] ;
 	if(s1[i] == s2[j]) return dp[i][j] = solve(s1,s2,i+1,j+1) ;
