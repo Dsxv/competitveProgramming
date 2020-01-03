@@ -9,26 +9,37 @@ int32_t main(){
 	while(t--){
 		int n , s ;
 		cin >> n >> s ;
-		int pre[n+1] = {0} , mx[n+1] = {0} , ps[n+1] = {0} ;
-		for(int i = 1 ; i <= n ; i++){
-			int x ; 
-			cin >> x ;
-			pre[i] = pre[i-1] + x ;
-			if(mx[i-1] < x) {
-				ps[i] = i ;
-			} else ps[i] = ps[i-1] ;
-			mx[i] = max(mx[i-1],x) ;
+		int a[n] ;
+		for(int i = 0 ; i < n ; i++) {
+			cin >> a[i] ;
 		}
-		int ans = 0 ;
-		if(pre[n] > s) {
-			for(int i = n ; i >= 1 ; i--){
-				if(pre[i] - mx[i] <= s) {
-					ans = ps[i] ;
-					break ;
-				}
+		int ind = -1 ;
+		int sum = 0 ;
+		for(int i = 0 ; i < n ; i++) {
+			sum += a[i] ;
+			if(sum > s) {
+				ind = i ;
+				break ;
 			}
 		}
-		cout << ans << endl ;
+		if(ind == -1){
+			cout << 0 << endl ; continue ;
+		}
+		int mx = max_element(a,a+ind+1) - a ;
+		sum -= a[mx] ;
+		for(int i = ind + 1; i < n ; i++){
+			if(mx == i) continue ;
+			sum += a[i] ;
+			if(sum > s){
+				if(i-1 > ind) {
+					cout << mx+1 << endl ;
+				}else{
+					cout << 0 << endl ;
+				}
+				break ;
+			}
+		}
+		if(sum <= s) cout << mx+1 << endl ;
 	}
 	return 0 ;
 }
