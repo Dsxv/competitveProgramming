@@ -36,7 +36,6 @@ int32_t main(){
 		}
 		if(ind1 == -1){
 			cout << "NO\n" ;
-			continue ;
 		} else {
 			if(a[ind1] < a[ind2]) swap(ind1,ind2) ;
 			cn[ind1] = (p-1)/a[ind1] ;
