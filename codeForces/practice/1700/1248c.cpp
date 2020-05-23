@@ -5,7 +5,7 @@ using namespace std ;
 
 const int N = 1e5 + 10 ;
 const int mod = 1e9 + 7 ;
-int dp[N][2][2] ;
+int dp[N][2][3] ;
 int l = 1e5 + 2  ;
 int n , m ;
 
@@ -25,13 +25,13 @@ int solve(int i , int j , int k = 0){
 }
 
 int val(int x){
-	return solve(l-x,0) ;
+	return (solve(l-x,0)) % mod ;
 }
 
 int32_t main(){
 	memset(dp,-1,sizeof(dp)) ;
 	cin >> n >> m ;
-	cout << val(n) + val(m) - 2 ;
+	cout << (val(n) + val(m) - 2) % mod ;
 	return 0 ;
 }
 
